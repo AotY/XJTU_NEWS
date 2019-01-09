@@ -8,7 +8,7 @@
 /data
 /data/images
 /data/texts
-*.txt
+# *.txt
 *.spec
 
 ### Python template
