@@ -154,12 +154,12 @@ class GradeGui(tk.Tk):
         st = self.st_var.get()
         if st == '' or st == self.st_default_v:
             st = '2000-01-01 00:00:00'
-        self.output_text.insert(tk.INSERT, "开始时间：%s\n"  % ' '.join(st))
+        self.output_text.insert(tk.INSERT, "开始时间：%s\n"  % st)
 
         et = self.et_var.get()
         if et == '' or et == self.et_default_v:
             et = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        self.output_text.insert(tk.INSERT, "结束时间：%s\n"  % ' '.join(et))
+        self.output_text.insert(tk.INSERT, "结束时间：%s\n"  % et)
 
         save_dir = self.save_var.get()
         if save_dir == '' or not os.path.exists(save_dir):
