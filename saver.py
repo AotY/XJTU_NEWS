@@ -24,7 +24,7 @@ class Saver:
         for number, item in content_list_result.items():
             # 保存文本
 
-            f = open(os.path.join(self.texts_dir_path, item['title'] + '.txt'), 'w')
+            f = open(os.path.join(self.texts_dir_path, item['title'] + '.txt'), 'w', encoding='utf-8')
             f.write(item['title'] + '\n')
             f.write(item['date_time'] + '\n')
             f.write(item['write_info'] + '\n')
