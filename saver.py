@@ -39,9 +39,12 @@ class Saver:
             for i, img_url in enumerate(item['imgs_url']):
                 print('download img : {}'.format(img_url))
 
-                r = requests.get(img_url, stream=True)
-                if r.status_code == 200:
-                    name = str(i) + '.' + img_url.split('.')[-1]
-                    with open(os.path.join(imgs_dir, name), 'wb') as f:
-                        r.raw.decode_content = True
-                        shutil.copyfileobj(r.raw, f)
+                try:
+                    r = requests.get(img_url, stream=True)
+                    if r.status_code == 200:
+                        name = str(i) + '.' + img_url.split('.')[-1]
+                        with open(os.path.join(imgs_dir, name), 'wb') as f:
+                            r.raw.decode_content = True
+                            shutil.copyfileobj(r.raw, f)
+                except Exception as e:
+                    continue
