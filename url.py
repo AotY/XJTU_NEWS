@@ -1,17 +1,16 @@
-from pybloom import BloomFilter
+#  from pybloom import BloomFilter
 
 
 # 管理url列表
 class UrlManager(object):
     def __init__(self):
         self.urls = []
-        self.url_bloom_filter = BloomFilter(capacity=800000, error_rate=0.0001)
+        #  self.url_bloom_filter = BloomFilter(capacity=800000, error_rate=0.0001)
+        self.url_bloom_filter = set()
         self.empty = False
 
     def add_url(self, url):
-        # if url not in self.url_bloom_filter:
         self.urls.append(url)
-            # self.url_bloom_filter.add(url)
 
     def add_urls(self, urls):
         for url in urls:
