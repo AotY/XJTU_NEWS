@@ -1,6 +1,6 @@
 import threading
 from saver import Saver
-from parser import Parser
+from parser2 import Parser
 from url import UrlManager
 from download import get_response
 
