@@ -3,5 +3,6 @@
 主页新闻: http://news.xjtu.edu.cn/zyxw.htm
 
 软件界面
+![](./images/home.png)
 
 
