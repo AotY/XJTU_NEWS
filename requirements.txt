@@ -1,3 +1,4 @@
 requests==2.19.1
 jieba==0.39
 pyinstaller==3.4
+pandas==0.23.4

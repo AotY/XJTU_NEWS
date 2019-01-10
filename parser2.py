@@ -38,31 +38,33 @@ class Parser:
                 datetime = to_datetime(date_time)
 
                 print('page_url: {} \n title: {} \n date_time: {} \n'.format(page_url, title, date_time))
+                #  if datetime <= self.et and datetime >= self.st:
+                if datetime >= self.st:
+                    if datetime <= self.et and datetime >= self.st:
+                        # 解析正文
+                        result = self.parse_page(title, page_url)
+                        if result is None:
+                            continue
 
-                if datetime <= self.et and datetime >= self.st:
-                    # 解析正文
-                    result = self.parse_page(title, page_url)
-                    if result is None:
-                        continue
+                        content, imgs_url, write_info = result
 
-                    content, imgs_url, write_info = result
+                        url_manager.add_viewed(page_url)
 
-                    url_manager.add_viewed(page_url)
-
-                    # 当前新闻编号
-                    page_number = self.number_re.match(page_url.split('/')[-1]).group(0)
-                    content_list_result[page_number] = {
-                        'title': title,
-                        'date_time': date_time,
-                        'write_info': write_info,
-                        'imgs_url': imgs_url,
-                        'content': content
-                    }
+                        # 当前新闻编号
+                        page_number = self.number_re.match(page_url.split('/')[-1]).group(0)
+                        content_list_result[page_number] = {
+                            'title': title,
+                            'date_time': date_time,
+                            'write_info': write_info,
+                            'imgs_url': imgs_url,
+                            'content': content
+                        }
                 else:
                     is_continue = False
                     url_manager.add_viewed(page_url)
                     continue
             except Exception as e:
+                is_continue = True
                 continue
 
         if is_continue:
