@@ -34,7 +34,8 @@ class Parser:
             try:
                 page_url = urljoin(response.url, div_li.a['href'])
                 title = div_li.a.text.replace(' ', '')
-                date_time = div_li.cite.text[1:-1]
+                #  date_time = div_li.cite.text[1: -1]
+                date_time = div_li.cite.text[1: -1].split()[0]
                 datetime = to_datetime(date_time)
 
                 print('page_url: {} \n title: {} \n date_time: {} \n'.format(page_url, title, date_time))

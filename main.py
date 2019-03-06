@@ -12,15 +12,18 @@ from tkinter import filedialog
 
 from util import center_window
 from spider import Spider
+from common import home_urls
 
 
 class GradeGui(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        self.title('XJTU 主页新闻抓取平台')
+        #  self.title('XJTU 主页新闻抓取平台')
+        self.title('XJTU 新闻抓取平台')
+
         # self.geometry("700x900")
-        center_window(self, 800, 500)
+        center_window(self, 850, 550)
         self.resizable(False, False)
 
         standard_font = (None, 14)
@@ -137,7 +140,7 @@ class GradeGui(tk.Tk):
         self.save_var.set(save_dir)
 
     def start_crawl(self):
-        home_url = 'http://news.xjtu.edu.cn/zyxw.htm'  # 主页新闻
+        #  home_url = 'http://news.xjtu.edu.cn/zyxw.htm'  # 主页新闻
 
         editor_text = self.editor_var.get()
         if editor_text == '' or editor_text == self.editor_default_v:
@@ -172,7 +175,7 @@ class GradeGui(tk.Tk):
         self.queue = queue.Queue()
         self.spider = Spider(
             self.queue,
-            home_url,
+            home_urls,
             editors,
             keywords,
             st,
